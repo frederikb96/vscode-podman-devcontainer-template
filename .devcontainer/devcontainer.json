@@ -1,0 +1,23 @@
+{
+    "name": "Ubuntu Template",
+    "dockerFile": "Dockerfile",
+    "remoteUser": "ubuntu",
+    "runArgs": [
+        "--userns=keep-id"
+    ],
+    "workspaceFolder": "/home/ubuntu/workspace",
+    "mounts": [
+        "source=${localWorkspaceFolder}/container/.bash_history,target=/home/ubuntu/.bash_history,type=bind",
+        "source=${localWorkspaceFolder},target=/home/ubuntu/workspace,type=bind",
+        "source=/run/user/1000,target=/run/user/1000,type=bind",
+        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind",
+        "source=${localEnv:XAUTHORITY},target=/home/ubuntu/.Xauthority,type=bind"
+    ],
+    "containerEnv": {
+        "WAYLAND_DISPLAY": "wayland-0",
+        "XDG_RUNTIME_DIR": "/run/user/1000",
+        "DISPLAY": ":0",
+        "XAUTHORITY": "/home/ubuntu/.Xauthority"
+    },
+    "postStartCommand": "tmux new-session -d -s test 'ls'"
+}
