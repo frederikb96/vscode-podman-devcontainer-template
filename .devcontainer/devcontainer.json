@@ -11,7 +11,8 @@
         "source=${localWorkspaceFolder},target=/home/ubuntu/workspace,type=bind",
         "source=/run/user/1000,target=/run/user/1000,type=bind",
         "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind",
-        "source=${localEnv:XAUTHORITY},target=/home/ubuntu/.Xauthority,type=bind"
+        "source=${localEnv:XAUTHORITY},target=/home/ubuntu/.Xauthority,type=bind",
+        "source=/dev/dri,target=/dev/dri,type=bind"
     ],
     "containerEnv": {
         "WAYLAND_DISPLAY": "wayland-0",
